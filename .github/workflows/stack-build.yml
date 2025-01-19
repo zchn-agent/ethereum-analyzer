@@ -19,4 +19,4 @@ jobs:
           stack-version: 'latest'
 
       - name: Build
-        run: stack build
+        run: stack build --profile && solc --combined-json ast examples/etherscan.io/CryptoKittiesCore.sol | stack exec -- ea-analyze && find work/ -name "*.dot" -exec dot -Tpng -O \{\} \;
